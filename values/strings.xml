@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">QuanLyCuaHang</string>
+
+    //menu
+    <string name="action_About">About</string>
+    <string name="action_Exit">Exit</string>
+
+    //Language
+
+        //Main
+        <string name="hintTieuDe">Product Management</string>
+        <string name="hintTieuDe2">3D MODEL</string>
+        <string name="hinttk">Account</string>
+        <string name="hintmk">Password</string>
+        <string name="hintbtnDN">Confirm</string>
+
+        //QLSP
+        <string name="hintTatca" translatable="false">ALL</string>
+        <string name="hintPhanloai">Type</string>
+        <string name="hintThem">Add</string>
+
+        //CNSP
+        <string name="hintma">Code : </string>
+        <string name="hintten">Name : </string>
+        <string name="hintloai">Type : </string>
+        <string name="hinttt">Info : </string>
+        <string name="hintgia">Cost : </string>
+        <string name="hintxn">Cofirm</string>
+        <string name="hinthuy">Cancle</string>
+
+        //View
+        <string name="hintds">List Product</string>
+        <string name="hintds2">List Type</string>
+        <string name="hintch">Do you want to delete? </string>
+        <string name="hintco">YES</string>
+        <string name="hintkhong">NO</string>
+        <string name="hintxoa">Del</string>
+        <string name="hintsua">Edit</string>
+
+        //Info
+    <string name="hintt">Name</string>
+    <string name="hintlop">Class</string>
+    <string name="hintms">Code </string>
+    <string name="hintmail" translatable="false">Email</string>
+    <string name="hintsdt">Tel</string>
+    <string name="hintmaloai">Code</string>
+
+</resources>

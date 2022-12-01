@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEB3B"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/llTieuDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imghome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <TextView
+            android:id="@+id/tvTieuDe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hintTieuDe"
+            android:textColor="@color/purple_700"
+            android:textSize="15pt" />
+
+        <TextView
+            android:id="@+id/tvCH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hintTieuDe2"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12pt" />
+
+        <EditText
+            android:id="@+id/etTenDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="11"
+            android:gravity="center"
+            android:text="@string/hinttk"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etMatKhau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="11"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:text="@string/hintmk"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hintbtnDN"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
