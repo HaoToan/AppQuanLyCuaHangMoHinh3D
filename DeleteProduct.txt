@@ -1,0 +1,4 @@
+private void deleteProduct(int i) {
+         Thongtin.arrayMoHinh.remove(i);
+         Thongtin.adapterSanPham.notifyDataSetChanged();
+    }
