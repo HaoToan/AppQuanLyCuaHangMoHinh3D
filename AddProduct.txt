@@ -1,0 +1,17 @@
+private void addProcduct() {
+        String ma = "";
+        String ten = "";
+        String loai = "";
+        String tt = "";
+        int gia = 0;
+                if (Thongtin.module.equals("Them")) {
+                    ma = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
+                    Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
+                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    Thongtin.module = "";
+                }
+    }
