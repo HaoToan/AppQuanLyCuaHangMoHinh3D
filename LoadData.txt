@@ -1,0 +1,75 @@
+  private void getData(String server) {
+        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, server, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                if (Thongtin.chon == -1) {
+                                    Thongtin.arrayMoHinh.add(new SanPham(
+                                                    object.getString("masp"),
+                                                    object.getString("tensp"),
+                                                    object.getString("maloaisp"),
+                                                    object.getString("thongtin"),
+                                                    object.getInt("gia"),
+                                                    object.getString("hinhanh")
+                                            )
+                                    );
+                                    class loadImage extends AsyncTask<String, Void, Bitmap> {
+                                        Bitmap bitmapimg = null;
+
+                                        @Override
+                                        protected Bitmap doInBackground(String... strings) {
+                                            try {
+                                                URL url = new URL(strings[0]);
+                                                InputStream inputStream = url.openConnection().getInputStream();
+                                                bitmapimg = BitmapFactory.decodeStream(inputStream);
+                                            } catch (MalformedURLException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                            return bitmapimg;
+                                        }
+
+                                        @Override
+                                        protected void onPostExecute(Bitmap bitmap) {
+                                            super.onPostExecute(bitmap);
+                                            img.setImageBitmap(bitmap);
+                                        }
+                                    }
+                                    new loadImage().execute(Thongtin.arrayMoHinh.get(i).getAnh().toString());
+                                    boolean check = false;
+                                    if (Thongtin.listLoai.size() == 0) {
+                                        Thongtin.listLoai.add(new LoaiSanPham(object.getString("maloaisp")));
+                                    } else {
+                                        for (int j = 0; j < Thongtin.listLoai.size(); j++) {
+                                            if (Thongtin.listLoai.get(j).getMaloaisp().toString().equals(object.getString("maloaisp"))) {
+                                                check = true;
+                                            }
+                                        }
+                                        if (check == false) {
+                                            Thongtin.listLoai.add(new LoaiSanPham(object.getString("maloaisp")));
+                                        }
+                                    }
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Thongtin.adapterLoaiSP.notifyDataSetChanged();
+                        Thongtin.adapterSanPham.notifyDataSetChanged();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
