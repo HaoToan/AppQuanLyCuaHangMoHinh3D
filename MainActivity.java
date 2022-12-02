@@ -59,9 +59,13 @@ public class MainActivity extends AppCompatActivity {
         btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, QuanLySanPham.class);
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                 if(ettk.getText().toString().trim().equals("admin")&&etmk.getText().toString().trim().equals("admin")){
+                    Intent intent = new Intent(MainActivity.this, QuanLySanPham.class);
+                    startActivity(intent);
+                    Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                }else{
+		            Toast.makeText(MainActivity.this, "Thông tin đăng  nhập không chính xác!", Toast.LENGTH_SHORT).show();
+	            }
             }
         });
     }
