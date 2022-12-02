@@ -5,6 +5,8 @@
                     Intent intent = new Intent(MainActivity.this, QuanLySanPham.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                }
+                }else{
+		Toast.makeText(MainActivity.this, "Thông tin đăng  nhập không chính xác!", Toast.LENGTH_SHORT).show();
+	      }
             }
         });
