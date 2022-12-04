@@ -574,5 +574,83 @@ public class QuanLySanPham extends CapNhatSanPham {
         });
         dialog.show();
     }
+     private void xulyALL() {
+        String ma = "";
+        String ten = "";
+        String loai = "";
+        String tt = "";
+        int gia = 0;
+        if (Thongtin.swappage == true) {
+            if (Thongtin.function == true) {
+                if (Thongtin.module.equals("Them")) {
+                    ma = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
+                    Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
+                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    Thongtin.module = "";
+                } else if (Thongtin.module.equals("Sua")) {
+                    String madl = Thongtin.arrayLoaiSP.get(Thongtin.chon).getMasp().toString();
+                    ma = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
+                    for (int k = 0; k < Thongtin.arrayMoHinh.size(); k++) {
+                        if (Thongtin.arrayMoHinh.get(k).getMasp().equals(madl)) {
+                            Thongtin.arrayMoHinh.get(k).setMasp(ma);
+                            Thongtin.arrayMoHinh.get(k).setTensp(ten);
+                            Thongtin.arrayMoHinh.get(k).setMaloaisp(loai);
+                            Thongtin.arrayMoHinh.get(k).setThongtin(tt);
+                            Thongtin.arrayMoHinh.get(k).setGia(gia);
+                            if (Thongtin.checkdoianh == true) {
+                                Thongtin.arrayMoHinh.get(k).setAnh("");
+                            }
+                        }
+                    }
+                    Thongtin.module = "";
+                } else {
+                    lvSP.setAdapter(Thongtin.adapterSanPham);
+                }
+            } else {
+                if (Thongtin.module.equals("Them")) {
+                    ma = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
+                    Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
+                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    Thongtin.adapterSanPham.notifyDataSetChanged();
+                    Thongtin.module = "";
+                } else if (Thongtin.module.equals("Sua")) {
+                    ma = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
+                    Thongtin.arrayMoHinh.get(Thongtin.chon).setMasp(ma);
+                    Thongtin.arrayMoHinh.get(Thongtin.chon).setTensp(ten);
+                    Thongtin.arrayMoHinh.get(Thongtin.chon).setMaloaisp(loai);
+                    Thongtin.arrayMoHinh.get(Thongtin.chon).setThongtin(tt);
+                    Thongtin.arrayMoHinh.get(Thongtin.chon).setGia(gia);
+                    Thongtin.adapterSanPham.notifyDataSetChanged();
+                    Thongtin.module = "";
+                } else {
+                    lvSP.setAdapter(Thongtin.adapterSanPham);
+                }
+            }
+            lvSP.setAdapter(Thongtin.adapterSanPham);
+        } else {
+            lvSP.setAdapter(Thongtin.adapterSanPham);
+        }
+
+        Thongtin.checkdoianh = false;
+        Thongtin.module = "";
+        Thongtin.function = false;
+        Toast.makeText(QuanLySanPham.this,"Tất cả SP",Toast.LENGTH_SHORT).show();
+    }
 
 }
