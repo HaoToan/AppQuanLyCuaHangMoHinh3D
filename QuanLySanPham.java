@@ -50,6 +50,7 @@ public class QuanLySanPham extends CapNhatSanPham {
     String url = "http://192.168.1.201/WebService/updatedata.php";
     ListView lvSP;
     Button btnAll, btnPL, btnThem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,6 @@ public class QuanLySanPham extends CapNhatSanPham {
             lvSP.setAdapter(Thongtin.adapterSanPhamTheoloai);
         }
     }
-
 
     private void addEvents() {
         btnPL.setOnClickListener(new View.OnClickListener() {
@@ -107,9 +107,9 @@ public class QuanLySanPham extends CapNhatSanPham {
                 TextView tvtt = (TextView) dialog.findViewById(R.id.tvtt);
                 TextView tvgia = (TextView) dialog.findViewById(R.id.tvgia);
                 if (Thongtin.firstv == -1) {
-                    //Kiem tra chuyen trang ?
+                    // Kiem tra chuyen trang ?
                     if (Thongtin.swappage == false) {
-                        //Dung tai trang chu
+                        // Dung tai trang chu
                         if (Thongtin.function == false) {
                             tvma.setText(Thongtin.arrayMoHinh.get(i).getMasp().toString());
                             tvten.setText(Thongtin.arrayMoHinh.get(i).getTensp().toString());
@@ -163,7 +163,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                                 }
                             });
                         }
-                        //Trang phan loai
+                        // Trang phan loai
                         else {
                             tvma.setText(Thongtin.arrayLoaiSP.get(i).getMasp().toString());
                             tvten.setText(Thongtin.arrayLoaiSP.get(i).getTensp().toString());
@@ -221,7 +221,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                         }
                     }
                 }
-                //Update
+                // Update
                 else {
                     if (Thongtin.function == false) {
                         tvma.setText(Thongtin.arrayMoHinh.get(i).getMasp().toString());
@@ -229,14 +229,15 @@ public class QuanLySanPham extends CapNhatSanPham {
                         tvloai.setText(Thongtin.arrayMoHinh.get(i).getMaloaisp().toString());
                         tvtt.setText(Thongtin.arrayMoHinh.get(i).getThongtin().toString());
                         tvgia.setText(String.valueOf(Thongtin.arrayMoHinh.get(i).getGia()) + "đ");
-                        //Kiem tra anh da thay doi o trang chu
+                        // Kiem tra anh da thay doi o trang chu
                         if (Thongtin.arrayMoHinh.get(i).getAnh().equals("")) {
                             for (int j = 0; j < Thongtin.arrayUpdate.size(); j++) {
-                                if (Thongtin.arrayMoHinh.get(i).getMasp().toString().equals(Thongtin.arrayUpdate.get(j).getMasp().toString())) {
+                                if (Thongtin.arrayMoHinh.get(i).getMasp().toString()
+                                        .equals(Thongtin.arrayUpdate.get(j).getMasp().toString())) {
                                     img.setImageBitmap(Thongtin.arrayUpdate.get(j).getAnh());
                                 }
                             }
-                        }//Neu khong thay doi giu nguyen ban dau
+                        } // Neu khong thay doi giu nguyen ban dau
                         else {
                             class loadImage extends AsyncTask<String, Void, Bitmap> {
                                 Bitmap bitmapimg = null;
@@ -286,7 +287,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                             }
                         });
                     }
-                    //View Phan Loai
+                    // View Phan Loai
                     else {
                         tvma.setText(Thongtin.arrayLoaiSP.get(i).getMasp().toString());
                         tvten.setText(Thongtin.arrayLoaiSP.get(i).getTensp().toString());
@@ -295,11 +296,12 @@ public class QuanLySanPham extends CapNhatSanPham {
                         tvgia.setText(String.valueOf(Thongtin.arrayLoaiSP.get(i).getGia()) + "đ");
                         if (Thongtin.arrayLoaiSP.get(i).getAnh().equals("")) {
                             for (int j = 0; j < Thongtin.arrayUpdate.size(); j++) {
-                                if (Thongtin.arrayLoaiSP.get(i).getMasp().toString().equals(Thongtin.arrayUpdate.get(j).getMasp().toString())) {
+                                if (Thongtin.arrayLoaiSP.get(i).getMasp().toString()
+                                        .equals(Thongtin.arrayUpdate.get(j).getMasp().toString())) {
                                     img.setImageBitmap(Thongtin.arrayUpdate.get(j).getAnh());
                                 }
                             }
-                        }//Neu khong thay doi giu nguyen ban dau
+                        } // Neu khong thay doi giu nguyen ban dau
                         else {
                             class loadImage extends AsyncTask<String, Void, Bitmap> {
                                 Bitmap bitmapimg = null;
@@ -373,7 +375,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                     tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
                     gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
                     Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
-                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    updateDatatoSever(url, ma, ten, loai, tt, String.valueOf(gia), "img");
                     Thongtin.module = "";
                 } else if (Thongtin.module.equals("Sua")) {
                     String madl = Thongtin.arrayLoaiSP.get(Thongtin.chon).getMasp().toString();
@@ -406,7 +408,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                     tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
                     gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
                     Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
-                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    updateDatatoSever(url, ma, ten, loai, tt, String.valueOf(gia), "img");
                     Thongtin.adapterSanPham.notifyDataSetChanged();
                     Thongtin.module = "";
                 } else if (Thongtin.module.equals("Sua")) {
@@ -434,7 +436,7 @@ public class QuanLySanPham extends CapNhatSanPham {
         Thongtin.checkdoianh = false;
         Thongtin.module = "";
         Thongtin.function = false;
-        Toast.makeText(QuanLySanPham.this,"Tất cả SP",Toast.LENGTH_SHORT).show();
+        Toast.makeText(QuanLySanPham.this, "Tất cả SP", Toast.LENGTH_SHORT).show();
     }
 
     private void xulySua() {
@@ -442,7 +444,6 @@ public class QuanLySanPham extends CapNhatSanPham {
         Intent intent = new Intent(QuanLySanPham.this, CapNhatSanPham.class);
         startActivity(intent);
     }
-
 
     private void xulyPL() {
         Thongtin.function = true;
@@ -480,13 +481,13 @@ public class QuanLySanPham extends CapNhatSanPham {
                         lvSP.setAdapter(Thongtin.adapterSanPhamTheoloai);
                         dialog1.cancel();
                         dialog.cancel();
-                        Toast.makeText(QuanLySanPham.this,"Loại SP: "+ml,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuanLySanPham.this, "Loại SP: " + ml, Toast.LENGTH_SHORT).show();
                     }
                 });
                 btnXoa.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String ml=Thongtin.listLoai.get(i).getMaloaisp().toString();
+                        String ml = Thongtin.listLoai.get(i).getMaloaisp().toString();
                         Dialog dialog2 = new Dialog(dialog1.getContext());
                         dialog2.setCancelable(false);
                         dialog2.setContentView(R.layout.yesno_dialog);
@@ -496,8 +497,8 @@ public class QuanLySanPham extends CapNhatSanPham {
                             @Override
                             public void onClick(View view) {
                                 Thongtin.listLoai.remove(i);
-                                for(int j=0;j<Thongtin.arrayMoHinh.size();j++){
-                                    if(Thongtin.arrayMoHinh.get(j).getMaloaisp().toString().equals(ml)){
+                                for (int j = 0; j < Thongtin.arrayMoHinh.size(); j++) {
+                                    if (Thongtin.arrayMoHinh.get(j).getMaloaisp().toString().equals(ml)) {
                                         Thongtin.arrayMoHinh.remove(j);
                                         j--;
                                     }
@@ -507,7 +508,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                                 dialog2.cancel();
                                 dialog1.cancel();
                                 lvLoaiSP.setAdapter(Thongtin.adapterLoaiSP);
-                                Toast.makeText(QuanLySanPham.this,"Xóa thành công!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(QuanLySanPham.this, "Xóa thành công!", Toast.LENGTH_SHORT).show();
                             }
                         });
                         btnno.setOnClickListener(new View.OnClickListener() {
@@ -533,12 +534,12 @@ public class QuanLySanPham extends CapNhatSanPham {
         btnnew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog1= new Dialog(QuanLySanPham.this);
+                Dialog dialog1 = new Dialog(QuanLySanPham.this);
                 dialog1.setCancelable(false);
                 dialog1.setContentView(R.layout.newloai_dialog);
-                EditText etmaloai= (EditText) dialog1.findViewById(R.id.etMaloaisp);
-                ImageButton btnimgback=(ImageButton) dialog1.findViewById(R.id.btnimghuy);
-                ImageButton btndone=(ImageButton) dialog1.findViewById(R.id.btnimgthem);
+                EditText etmaloai = (EditText) dialog1.findViewById(R.id.etMaloaisp);
+                ImageButton btnimgback = (ImageButton) dialog1.findViewById(R.id.btnimghuy);
+                ImageButton btndone = (ImageButton) dialog1.findViewById(R.id.btnimgthem);
                 btnimgback.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -548,22 +549,23 @@ public class QuanLySanPham extends CapNhatSanPham {
                 btndone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        boolean done=true;
-                        if(etmaloai.getText().length()==0){
-                            Toast.makeText(QuanLySanPham.this,"Vui lòng nhập thông tin!",Toast.LENGTH_SHORT).show();
-                        }else{
-                            for(int j=0;j<Thongtin.listLoai.size();j++){
-                                if(etmaloai.getText().toString().equals(Thongtin.listLoai.get(j).getMaloaisp().toString())){
-                                    done=false;
+                        boolean done = true;
+                        if (etmaloai.getText().length() == 0) {
+                            Toast.makeText(QuanLySanPham.this, "Vui lòng nhập thông tin!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            for (int j = 0; j < Thongtin.listLoai.size(); j++) {
+                                if (etmaloai.getText().toString()
+                                        .equals(Thongtin.listLoai.get(j).getMaloaisp().toString())) {
+                                    done = false;
                                 }
                             }
                         }
-                        if(done==false){
-                            Toast.makeText(QuanLySanPham.this,"Loại SP đã có!",Toast.LENGTH_SHORT).show();
-                        }else{
+                        if (done == false) {
+                            Toast.makeText(QuanLySanPham.this, "Loại SP đã có!", Toast.LENGTH_SHORT).show();
+                        } else {
                             Thongtin.listLoai.add(new LoaiSanPham(etmaloai.getText().toString()));
                             Thongtin.adapterLoaiSP.notifyDataSetChanged();
-                            Toast.makeText(QuanLySanPham.this,"Thêm thành công!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(QuanLySanPham.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
                             dialog1.cancel();
                             dialog.cancel();
                         }
@@ -574,7 +576,8 @@ public class QuanLySanPham extends CapNhatSanPham {
         });
         dialog.show();
     }
-     private void xulyALL() {
+
+    private void xulyALL() {
         String ma = "";
         String ten = "";
         String loai = "";
@@ -589,7 +592,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                     tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
                     gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
                     Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
-                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    updateDatatoSever(url, ma, ten, loai, tt, String.valueOf(gia), "img");
                     Thongtin.module = "";
                 } else if (Thongtin.module.equals("Sua")) {
                     String madl = Thongtin.arrayLoaiSP.get(Thongtin.chon).getMasp().toString();
@@ -622,7 +625,7 @@ public class QuanLySanPham extends CapNhatSanPham {
                     tt = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getThongtin().toString();
                     gia = Thongtin.arrayUpdate.get(Thongtin.sp - 1).getGia();
                     Thongtin.arrayMoHinh.add(new SanPham(ma, ten, loai, tt, gia, ""));
-                    updateDatatoSever(url,ma,ten,loai,tt,String.valueOf(gia),"img");
+                    updateDatatoSever(url, ma, ten, loai, tt, String.valueOf(gia), "img");
                     Thongtin.adapterSanPham.notifyDataSetChanged();
                     Thongtin.module = "";
                 } else if (Thongtin.module.equals("Sua")) {
@@ -650,7 +653,7 @@ public class QuanLySanPham extends CapNhatSanPham {
         Thongtin.checkdoianh = false;
         Thongtin.module = "";
         Thongtin.function = false;
-        Toast.makeText(QuanLySanPham.this,"Tất cả SP",Toast.LENGTH_SHORT).show();
+        Toast.makeText(QuanLySanPham.this, "Tất cả SP", Toast.LENGTH_SHORT).show();
     }
 
 }
