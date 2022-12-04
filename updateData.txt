@@ -1,0 +1,28 @@
+ public void updateDatatoSever(String url,String ma,String ten,String loai, String thongtin,String gia, String hinhanh){
+        RequestQueue requestQueue = Volley.newRequestQueue(QuanLySanPham.this);
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(QuanLySanPham.this,"loi",Toast.LENGTH_SHORT).show();
+            }
+        }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params= new HashMap<>();
+                    params.put("ma",ma);
+                    params.put("ten",ten);
+                    params.put("loai",loai);
+                    params.put("tt",thongtin);
+                    params.put("g",gia);
+                    params.put("ha",hinhanh);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
