@@ -58,6 +58,44 @@ public class QuanLySanPham extends CapNhatSanPham {
         addControls();
         addEvents();
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_about) {
+            Dialog dialog2 = new Dialog(QuanLySanPham.this);
+            dialog2.setCancelable(false);
+            dialog2.setContentView(R.layout.thongtinapp_dialog);
+            Button btnOke = (Button) dialog2.findViewById(R.id.btnxacnhan);
+            ImageButton btncall =(ImageButton) dialog2.findViewById(R.id.btncall);
+            TextView tvsdt = (TextView) dialog2.findViewById(R.id.tvsdt);
+            btncall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tvsdt.getText().toString().trim())));
+                    dialog2.cancel();
+                }
+            });
+            btnOke.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog2.cancel();
+                }
+            });
+            dialog2.show();
+        } else {
+            Intent intent = new Intent(QuanLySanPham.this, MainActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void addControls() {
         btnAll = findViewById(R.id.btnAll);
