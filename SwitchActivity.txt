@@ -1,0 +1,5 @@
+ private void xulySua() {
+        Thongtin.module = "Sua";
+        Intent intent = new Intent(QuanLySanPham.this, CapNhatSanPham.class);
+        startActivity(intent);
+    }

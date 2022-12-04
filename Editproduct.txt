@@ -1,0 +1,20 @@
+private void editProduct(int i) {
+          String madl = Thongtin.arrayLoaiSP.get(Thongtin.chon).getMasp().toString();
+                    ma = Thongtin.arrayUpdate.get(i).getMasp().toString();
+                    ten = Thongtin.arrayUpdate.get(i).getTensp().toString();
+                    loai = Thongtin.arrayUpdate.get(i).getMaloaisp().toString();
+                    tt = Thongtin.arrayUpdate.get(i).getThongtin().toString();
+                    gia = Thongtin.arrayUpdate.get(i).getGia();
+                    for (int k = 0; k < Thongtin.arrayMoHinh.size(); k++) {
+                        if (Thongtin.arrayMoHinh.get(k).getMasp().equals(madl)) {
+                            Thongtin.arrayMoHinh.get(k).setMasp(ma);
+                            Thongtin.arrayMoHinh.get(k).setTensp(ten);
+                            Thongtin.arrayMoHinh.get(k).setMaloaisp(loai);
+                            Thongtin.arrayMoHinh.get(k).setThongtin(tt);
+                            Thongtin.arrayMoHinh.get(k).setGia(gia);
+                            if (Thongtin.checkdoianh == true) {
+                                Thongtin.arrayMoHinh.get(k).setAnh(Thongtin.arrayUpdate.get(i).getAnh());
+                            }
+                        }
+                  }
+    }
